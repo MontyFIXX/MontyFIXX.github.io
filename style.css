@@ -1,0 +1,219 @@
+/* EquiCenter — strona główna. Paleta i typografia wzięte z aplikacji
+   (Theme.swift): bordo, krem, karmel, butelkowa zieleń, szeryfowe nagłówki. */
+
+:root {
+  --cream: #EDE3CE;
+  --paper: #F6F0E0;
+  --sunken: #E7DBC1;
+  --hair: #DACBA9;
+  --ink: #3A2A24;
+  --ink-soft: #5B4A41;
+  --muted: #8A8275;
+  --wine: #6E2A38;
+  --wine-dark: #4E1B27;
+  --camel: #C2A36B;
+  --camel-ink: #8A6A33;
+  --forest: #2F4138;
+  --rose: #D8A98E;
+  --on-dark: #F7EEE6;
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --wrap: 1120px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background-color: var(--cream);
+  /* delikatna faktura papieru — bez niej krem wygląda jak płaski kolor z ekranu */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .16 0 0 0 0 .14 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--ink);
+  font: 17px/1.62 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--wine); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { color: var(--wine-dark); }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+  color: var(--wine-dark);
+  margin: 0;
+}
+em.accent { font-style: italic; color: var(--wine); }
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--camel-ink);
+  font-weight: 600;
+  margin: 0 0 18px;
+}
+
+/* ── Pasek górny ─────────────────────────────────────────────── */
+.top { border-bottom: 1px solid var(--hair); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--wine-dark); }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+.brand span { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+.nav { display: flex; align-items: center; gap: 26px; font-size: 15px; }
+.nav a { color: var(--ink-soft); text-decoration: none; }
+.nav a:hover { color: var(--wine); }
+.nav .btn, .nav .btn:hover { color: var(--on-dark); }
+.nav .lang { font-size: 13px; letter-spacing: .08em; border: 1px solid var(--hair); padding: 4px 9px; border-radius: 7px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--wine); color: var(--on-dark);
+  padding: 15px 24px; border-radius: 12px;
+  font-weight: 600; font-size: 16px; text-decoration: none;
+  transition: background .15s ease, transform .15s ease;
+}
+.btn:hover { background: var(--wine-dark); color: var(--on-dark); transform: translateY(-1px); }
+.btn small { font-weight: 400; opacity: .75; font-size: 13px; }
+.btn-sm { padding: 9px 16px; font-size: 14px; border-radius: 10px; }
+
+/* ── Nagłówek ────────────────────────────────────────────────── */
+.hero .wrap {
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px;
+  align-items: center; padding-top: 72px; padding-bottom: 104px;
+}
+.hero h1 { font-size: clamp(2.7rem, 5.6vw, 4.7rem); line-height: 1.02; }
+.hero .lead { font-size: 1.16rem; color: var(--ink-soft); max-width: 36ch; margin: 26px 0 34px; }
+.hero .actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.hero .facts { margin-top: 30px; font-size: 14px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.hero .facts span + span::before { content: "·"; margin-right: 10px; color: var(--camel); }
+
+.visual { position: relative; display: flex; justify-content: center; padding: 30px 0; }
+.plate {
+  position: absolute; inset: 8% 6% 4% 14%;
+  background: var(--wine-dark); border-radius: 30px;
+}
+.route { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.route path {
+  fill: none; stroke: var(--camel); stroke-width: 2.4; stroke-linecap: round;
+  stroke-dasharray: 2 9;
+}
+.route .start { fill: var(--cream); stroke: var(--camel); stroke-width: 2.4; }
+.route .end { fill: var(--camel); }
+
+.phone {
+  position: relative; width: 272px; padding: 9px;
+  background: #1c1416; border-radius: 46px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 34px 70px -24px rgba(46,14,22,.6);
+}
+.phone img { border-radius: 37px; width: 100%; height: auto; }
+.hero .phone { transform: rotate(-2.5deg); }
+
+.gait-card {
+  position: absolute; left: -6px; bottom: 54px; width: 236px;
+  background: var(--paper); border: 1px solid var(--hair); border-radius: 16px;
+  padding: 16px 18px; box-shadow: 0 18px 40px -22px rgba(46,14,22,.5);
+  font-size: 14px;
+}
+.gait-card h3 { font-size: 15px; margin-bottom: 10px; color: var(--wine-dark); }
+.gait-row { display: grid; grid-template-columns: 52px 1fr 40px; align-items: center; gap: 10px; margin: 7px 0; color: var(--ink-soft); }
+.gait-row i { display: block; height: 7px; border-radius: 4px; background: var(--sunken); position: relative; overflow: hidden; }
+.gait-row i b { position: absolute; inset: 0 auto 0 0; border-radius: 4px; }
+.gait-row span:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink); }
+
+/* ── Rozdziały ───────────────────────────────────────────────── */
+.chapter { border-top: 1px solid var(--hair); }
+.chapter.alt { background: rgba(246, 240, 224, .55); }
+.chapter .wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px;
+  align-items: center; padding-top: 104px; padding-bottom: 104px;
+}
+.chapter.flip .text { order: 2; }
+.num { display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px; }
+.num b { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 44px; color: var(--camel); line-height: 1; }
+.num span { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--camel-ink); font-weight: 600; }
+.chapter h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.08; max-width: 16ch; }
+.chapter p { color: var(--ink-soft); max-width: 46ch; margin: 22px 0 0; }
+.list { list-style: none; padding: 0; margin: 26px 0 0; max-width: 46ch; }
+.list li { position: relative; padding: 11px 0 11px 30px; border-top: 1px solid var(--hair); color: var(--ink); }
+.list li:last-child { border-bottom: 1px solid var(--hair); }
+.list li::before { content: ""; position: absolute; left: 0; top: 23px; width: 16px; height: 1.5px; background: var(--camel); }
+
+.pair { position: relative; display: flex; justify-content: center; min-height: 560px; }
+.pair .phone { width: 248px; }
+.pair .phone.back { position: absolute; transform: translate(-46%, 34px) rotate(-4deg) scale(.9); opacity: .97; }
+.pair .phone.front { transform: translate(22%, 0) rotate(2deg); }
+.single { display: flex; justify-content: center; }
+
+/* ── Dane ────────────────────────────────────────────────────── */
+.data { background: var(--forest); color: var(--on-dark); }
+.data .wrap { padding-top: 104px; padding-bottom: 104px; }
+.data .eyebrow { color: var(--rose); }
+.data h2 { color: var(--on-dark); font-size: clamp(2rem, 3.8vw, 3rem); max-width: 20ch; line-height: 1.08; }
+.data .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 56px; }
+.data .grid div { border-top: 1px solid rgba(247,238,230,.25); padding-top: 18px; }
+.data h3 { color: var(--on-dark); font-size: 19px; margin-bottom: 10px; }
+.data .grid p { margin: 0; color: rgba(247,238,230,.78); font-size: 15px; }
+.data a { color: var(--rose); }
+
+/* ── Premium ─────────────────────────────────────────────────── */
+.plans .wrap { padding-top: 104px; padding-bottom: 104px; }
+.plans h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); max-width: 18ch; line-height: 1.08; }
+.plans .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.plan { border-radius: 22px; padding: 34px 34px 30px; }
+.plan.free { background: var(--paper); border: 1px solid var(--hair); }
+.plan.premium { background: var(--wine-dark); color: var(--on-dark); }
+.plan h3 { font-size: 26px; }
+.plan.premium h3 { color: var(--on-dark); }
+.plan .price { margin: 8px 0 22px; font-size: 15px; color: var(--muted); }
+.plan.premium .price { color: var(--rose); }
+.plan ul { list-style: none; margin: 0; padding: 0; }
+.plan li { padding: 9px 0; border-top: 1px solid var(--hair); font-size: 15.5px; }
+.plan.premium li { border-top-color: rgba(247,238,230,.18); }
+.plans .note { font-size: 13.5px; color: var(--muted); margin-top: 20px; max-width: 70ch; }
+
+/* ── Zakończenie ─────────────────────────────────────────────── */
+.closing { border-top: 1px solid var(--hair); text-align: center; }
+.closing .wrap { padding-top: 96px; padding-bottom: 96px; }
+.closing img { width: 84px; height: 84px; border-radius: 20px; margin: 0 auto 26px; box-shadow: 0 16px 34px -18px rgba(46,14,22,.55); }
+.closing h2 { font-size: clamp(2rem, 4vw, 3.1rem); margin-bottom: 30px; }
+
+footer { background: var(--wine-dark); color: rgba(247,238,230,.8); font-size: 14px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-top: 34px; padding-bottom: 34px; }
+footer a { color: var(--on-dark); text-decoration: none; }
+footer a:hover { color: var(--rose); }
+footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+
+/* ── Telefon / tablet ────────────────────────────────────────── */
+@media (max-width: 920px) {
+  .nav a:not(.lang):not(.btn) { display: none; }
+  .hero .wrap, .chapter .wrap { grid-template-columns: 1fr; gap: 44px; }
+  .hero .wrap { padding-top: 48px; padding-bottom: 72px; }
+  .chapter .wrap { padding-top: 76px; padding-bottom: 76px; }
+  .chapter.flip .text { order: 0; }
+  .pair { min-height: 500px; }
+  .data .grid { grid-template-columns: 1fr 1fr; }
+  .plans .cols { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 20px; }
+  .top .wrap { height: 64px; }
+  .nav { gap: 12px; }
+  .hero .phone { width: 236px; }
+  .gait-card { left: -4px; width: 210px; bottom: 30px; padding: 13px 15px; }
+  .pair .phone { width: 196px; }
+  .pair { min-height: 430px; }
+  .data .grid { grid-template-columns: 1fr; gap: 28px; }
+  .plan { padding: 26px 24px; }
+  footer .wrap { flex-direction: column; }
+}
+
+/* Ślad trasy rysuje się raz przy wejściu — chyba że ktoś wyłączył animacje. */
+@media (prefers-reduced-motion: no-preference) {
+  .route path.track { animation: draw 2.4s ease-out both; }
+  @keyframes draw { from { stroke-dashoffset: 600; opacity: 0; } to { stroke-dashoffset: 0; opacity: 1; } }
+}
